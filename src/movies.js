@@ -78,6 +78,43 @@ const ratesAverage = (arr) => {
 
 // Iteration 5: Drama movies - Get the average of Drama Movies
 
+const dramaMoviesRate = (arr) => {
+	let dramaArray = [];
+
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i].genre.includes('Drama')) {
+			dramaArray.push(arr[i]);
+		}
+	}
+	return ratesAverage(dramaArray);
+};
+
 // Iteration 6: Time Format - Turn duration of the movies from hours to minutes
+
+// Code not working on Jasmine
+// const timeConverter = (time) => {
+// 	let hourInt = 0;
+// 	let minInt = 0;
+
+// 	for (let i = 0; i < time.length; i++) {
+// 		if (time[i] === 'h') {
+// 			hourInt += Number(time[i - 1]);
+// 		} else if (time[i] === 'm') {
+// 			minInt += Number(time[i - 1] + time[i - 2]);
+// 		}
+// 	}
+
+// 	return hourInt * 60 + minInt;
+// };
+
+// const turnHoursToMinutes = (arr) => {
+// 	let copyArr = [ ...arr ];
+
+// 	for (let i = 0; i < copyArr.length; i++) {
+// 		copyArr[i].duration = timeConverter(copyArr[i].duration);
+// 	};
+
+// 	return copyArr;
+// };
 
 // BONUS Iteration: Best yearly rate average - Best yearly rate average
