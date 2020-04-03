@@ -91,30 +91,30 @@ const dramaMoviesRate = (arr) => {
 
 // Iteration 6: Time Format - Turn duration of the movies from hours to minutes
 
-// Code not working on Jasmine
-// const timeConverter = (time) => {
-// 	let hourInt = 0;
-// 	let minInt = 0;
+const turnHoursToMinutes = (arr) => {
+	return arr.map((movie) => {
+		let copyOfMovie = { ...movie };
 
-// 	for (let i = 0; i < time.length; i++) {
-// 		if (time[i] === 'h') {
-// 			hourInt += Number(time[i - 1]);
-// 		} else if (time[i] === 'm') {
-// 			minInt += Number(time[i - 1] + time[i - 2]);
-// 		}
-// 	}
+		copyOfMovie.duration = timeConverter(movie.duration);
 
-// 	return hourInt * 60 + minInt;
-// };
+		return copyOfMovie;
+	});
+};
 
-// const turnHoursToMinutes = (arr) => {
-// 	let copyArr = [ ...arr ];
+// Helper Function
+const timeConverter = (time) => {
+	let minutes = 0;
 
-// 	for (let i = 0; i < copyArr.length; i++) {
-// 		copyArr[i].duration = timeConverter(copyArr[i].duration);
-// 	};
+	for (let i = 0; i < time.length; i++) {
+		if (time[i] === 'h') {
+			minutes += Number(time[i - 1]) * 60;
+		} else if (time[i] === 'm') {
+			minutes += time[i - 2] === ' ' ? Number(time[i - 1]) : Number(time[i - 2] + time[i - 1]);
+		}
+	}
 
-// 	return copyArr;
-// };
+	return minutes;
+};
 
 // BONUS Iteration: Best yearly rate average - Best yearly rate average
+
